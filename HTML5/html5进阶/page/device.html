@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="main"></div>
+<script>
+    //陀螺仪 只有带有陀螺仪的设备才支持体感
+    //苹果设备页面只有在https协议下才能使用这些接口
+    //11.1.x以及以前，是可以使用的，微信的浏览器
+    //alpha:指北（指南针）【0,360】为0 时候指北 180指南
+    //beta 平放时候beta值为0 如果将手机立起来（短边接触桌面）直立起来为90
+    //gamma 平方的时候gamma值为0 如果将手机立起来（长边接触桌面)直立时候gamma值为90
+    window.addEventListener("deviceorientation", function (event) {
+        console.log(event);
+        document.getElementById("main").innerHTML = "alpha:" + event.alpha + "beta:" + event.beta + "gamma:" + event.gamma;
+
+    });
+    window.addEventListener("devicemotion", function (event) {
+        document.getElementById("main").innerHTML = event.acceleration.x + "<br/>" + event.acceleration.y + "<br/>" + event.acceleration.z
+        if (Math.abs(event.acceleration.x) > 9 || Math.abs(event.acceleration.y) > 9 || Math.abs(event.acceleration.z) > 9) {
+            alert("在晃");
+        }
+    })
+
+</script>
+</body>
+</html>

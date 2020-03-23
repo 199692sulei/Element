@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0;
+        }
+
+        .wrapper {
+            width: 1040px;
+            height: 280px;
+            border: 1px solid black;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+
+        .wrapper ul {
+            width: 3120px;
+            height: 280px;
+            background-color: black;
+        }
+
+        .wrapper ul li {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+
+        <ul>
+            <li><img src="https://img.alicdn.com/simba/img/TB1UhykjpY7gK0jSZKzSuuikpXa.jpg" alt=""></li>
+            <li><img src="https://img.alicdn.com/simba/img/TB1X7NNjND1gK0jSZFySuwiOVXa.jpg" alt=""></li>
+            <li><img src="https://img.alicdn.com/tfs/TB11AMajVY7gK0jSZKzXXaikpXa-520-280.jpg_q90_.webp" alt=""></li>
+            <li><img src="https://img.alicdn.com/tfs/TB1ZbJ4j7L0gK0jSZFxXXXWHVXa-520-280.jpg_q90_.webp" alt=""></li>
+            <li><img src="https://img.alicdn.com/simba/img/TB1UhykjpY7gK0jSZKzSuuikpXa.jpg" alt=""></li>
+            <li><img src="https://img.alicdn.com/simba/img/TB1X7NNjND1gK0jSZFySuwiOVXa.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(function () {
+            var offset = 0;
+            var timer;
+
+            function autoPlay() {
+                timer = setInterval(function () {
+                    offset += -10;
+                    if (offset <= -2080) {
+                        offset = 0;
+                    }
+                    $('ul').css("marginLeft", offset)
+                },100)
+            }
+            autoPlay();
+            $("li").hover(function () {
+                clearInterval(timer);
+                $(this).siblings().fadeTo(100,0.5);
+                $(this).fadeTo(100,1);
+            }, function () {
+                autoPlay();
+                $("li").fadeTo(100,1);
+            })
+        })
+    </script>
+</body>
+
+</html>

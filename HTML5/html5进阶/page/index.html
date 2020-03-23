@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #abcdef;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script>
+        /**
+         * localStorage只能存储字符串
+         * 长期存放在浏览器写入localStorage（无论窗口是否关闭都需要存储)
+         * sessionStorage会话临时存储的变量
+         * 每次窗口关闭的时候sessionStorage都会自动清空
+         * sessionStorage.name="panda";
+         * localStorage和cookie
+         * localStorage在发送请求时候不会把数据发出去，cookie会把所有的数据带出去
+         * cookie存储的内容比较少4k localStorage可以存放比较多的内容5M左右
+         */
+        localStorage.name = "sulei";
+        localStorage.arr = JSON.stringify([1, 2, 3]);
+        console.log(JSON.parse(localStorage.arr));
+        localStorage.obj = JSON.stringify({
+            name: "sulei",
+            age: 18
+        });
+        console.log(JSON.parse(localStorage.obj));
+        sessionStorage.setItem("name","苏磊");
+    </script>
+</body>
+
+</html>

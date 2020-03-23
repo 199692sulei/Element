@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件</title>
+</head>
+
+<body>
+    <!-- <canvas id="canvas"></canvas>
+    <input type="file" id="files" multiple accept="image/*"> -->
+
+    <input type="file" id="files" accept="image/jpeg,image/jpg,image/png">
+    <img src="../../img/1.jpg" id="preview">
+    <script>
+        // let elem = document.getElementById("files");
+        // elem.onchange = function (event) {
+        //     console.log(this.files);
+        // }
+
+        // let blob = new Blob(['hello'], {
+        //     type: "text/plain"
+        // });
+
+        // let canvas = document.getElementById('canvas');
+        // canvas.toBlob(function (blob) {
+        //     let url = URL.createObjectURL(blob);
+        //     let a = document.createElement('a');
+        //     a.download = 'canvas';
+        //     a.href = url;
+        //     a.click();
+        //     URL.revokeObjectURL(url);
+        // })
+
+
+
+        var elem = document.getElementById('files'),
+            img = document.getElementById('preview');
+        elem.onchange = function () {
+            var files = elem.files,
+                reader = new FileReader();
+            if (files && files[0]) {
+                reader.onload = function (ev) {
+                    img.src = ev.target.result;
+                }
+                reader.readAsDataURL(files[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>

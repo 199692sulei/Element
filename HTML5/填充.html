@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        canvas {
+            width: 500px;
+            height: 300px;
+            border: 1px solid;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="can" width="500" height="300"></canvas>
+<script>
+    var canvas = document.getElementById('can');
+    var ctx = canvas.getContext('2d');
+
+
+
+
+     var img=new Image();
+     img.src="./img/2.jpg";
+     img.onload=function () {
+         ctx.save();
+         ctx.beginPath();
+         ctx.translate(100,100);
+         var bg=ctx.createPattern(img,'no-repeat');
+         ctx.fillStyle=bg;
+         ctx.fillRect(0,0,200,200);
+         ctx.restore();
+         ctx.beginPath();
+         ctx.moveTo(100,100);
+         ctx.lineTo(200,100);
+         ctx.lineTo(200,200);
+         ctx.closePath();
+         ctx.stroke();
+
+
+     }
+
+
+
+
+    // var img=new Image();
+    //   img.src="./img/1.jpg";
+    //   img.onload=function(){
+    //       ctx.beginPath();
+    //       ctx.translate(100,100);
+    //       var bg=ctx.createPattern(img,'no-repeat');
+    //       ctx.fillStyle=bg;
+    //       ctx.fillRect(0,0,200,100);
+    //   }
+
+
+    // ctx.stroke()
+</script>
+</body>
+</html>

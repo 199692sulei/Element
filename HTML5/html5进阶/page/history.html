@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        let data = [{
+            name: "HTML"
+        }, {
+            name: "CSS"
+        }, {
+            name: "JS"
+        }, {
+            name: "bootstrap"
+        }, {
+            name: "webpack"
+        }];
+
+        function search() {
+            let value = document.getElementById("search").value;
+            let result = data.filter(function (obj) {
+                if (obj.name.indexOf(value) > -1) {
+                    return obj;
+                }
+            });
+            render(result);
+            history.pushState({inpVal: value}, null, "#" + value);
+        }
+
+        function render(renderData) {
+            let content = "";
+            for (let i = 0; i < renderData.length; i++) {
+                content += `<div>${renderData[i].name}</div>`;
+            }
+            document.getElementById("main").innerHTML = content;
+        }
+
+        window.addEventListener("popstate", function (e) {
+            document.getElementById("search").value = e.state.inpVal ? e.state.inpVal : "";
+            let value = document.getElementById("search").value;
+            let result = data.filter(function (obj) {
+                if (obj.name.indexOf(value) > -1) {
+                    return obj;
+                }
+            });
+            render(result);
+        });
+        window.addEventListener("hashchange", function (e) {
+            console.log(e);
+        })
+    </script>
+</head>
+<body>
+
+<input type="text" id="search">
+<button onclick="search()">搜索</button>
+<div id="main"></div>
+<script>
+    render(data);
+</script>
+</body>
+</html>

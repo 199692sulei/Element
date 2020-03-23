@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<style type="text/css">
+	canvas {
+		width: 500px;
+		height: 300px;
+		border: 1px solid;
+	}
+</style>
+
+<body>
+	<canvas id="can" width="500px" height="300px"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('can');
+		var ctx = canvas.getContext('2d');
+		ctx.arc(100,100,50,0,Math.PI*1.8,0);
+		ctx.lineTo(100,100);
+		ctx.closePath();
+		ctx.stroke();
+		// ctx.moveTo(100,100);
+		// ctx.lineTo(300,100);
+		// ctx.lineTo(300,200);
+		// ctx.lineTo(100,200);
+		// ctx.closePath();
+		// ctx.stroke();
+
+		// ctx.rect(100, 100, 100, 100);
+		// ctx.fill();
+		// ctx.stroke();
+
+		// ctx.strokeRect(100,100,200,100);
+		// ctx.fill();
+
+		// ctx.fillRect(100, 100, 200, 100);
+		// ctx.rect(100, 100, 300, 200);
+		// ctx.stroke();
+		// ctx.fillRect(100,100,300,200)
+
+		//隐式类型转换
+		/**
+		 * 1,+ - * /
+		 * 2,+ -
+		 * 3, 某些比较运算符
+		 */
+		// console.log(
+		//   1+undefined,
+		//   1+null,
+		//   null+undefined,
+		//   true+false,
+		//   3+'6',
+		//   2+[],
+		// )
+		// console.log(Number({
+		// 	1: 2
+		// }));                                               //NaN
+		// console.log([] + {});                             //[object Object]
+		// console.log([] + function () {});                 //function(){}
+		// console.log(2 + [2, 3]);                         //22,3
+		// console.log(10 + function () {});                //10function(){}
+		// console.log(null + undefined);                      //NaN
+		// console.log([] - 5);                             //-5
+		// console.log('6' * []);                            //0
+		// console.log(null % true);                        //0
+		// console.log(true / [7]);                           //1/7
+		// console.log("A" - "A" + 2);                         //NaN
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style type="text/css">
+			canvas {
+				width: 500px;
+				height: 300px;
+				border: 1px solid;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="can" width="500" height="300"></canvas>
+		<script>
+			var canvas = document.getElementById('can');
+			var ctx = canvas.getContext('2d');
+			 
+			 // ctx.beginPath();
+			 // ctx.lineWidth=15;
+			 // ctx.moveTo(100,100);
+			 // ctx.lineTo(200,100);
+			 // ctx.lineTo(100,150);
+			 // ctx.lineCap="square";
+			 // ctx.lineJoin="miter"
+			 // ctx.stroke();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+            //====================================================================================================
+			 ctx.beginPath();
+			 ctx.font="30px Georgia"
+			 ctx.strokeRect(0,0,200,200);
+			 ctx.fillStyle="red";
+			 ctx.strokeText("mskajgka",200,100);//文字描边
+			 ctx.fillText("sulei",200,250);//文字填充
+			//==========================================================================================			
+			// ctx.beginPath();
+			// ctx.shadowColor = "orange";
+			// ctx.shadowBlur = 30;
+			// ctx.shadowOffsetX = 15;
+			// ctx.shadowOffsetY=15;
+			// ctx.rect(0, 0, 200, 200);
+			// ctx.stroke()
+
+
+
+
+			//辐射渐变=====================================================================================================
+			// ctx.beginPath();
+			// var bg = ctx.createRadialGradient(50, 50, 50, 100, 100, 20); //(x1,y1,r1,x2,y2,r2);
+			// bg.addColorStop(0, "red");
+			// bg.addColorStop(0.5, "green");
+			// bg.addColorStop(1, "blue");
+			//
+			// ctx.fillStyle = bg;
+			// ctx.translate(100, 100);
+			// ctx.fillRect(0, 0, 200, 200);
+		</script>
+	</body>
+</html>

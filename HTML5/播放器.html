@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>视频播放器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .video_player {
+            position: relative;
+            margin: 0 auto;
+            width: 1000px;
+            height: 500px;
+        }
+
+        video {
+            position: absolute;
+            width: 1000px;
+            height: 500px;
+            left: 0;
+            top: 0;
+        }
+
+        .menu {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            background: rgba(0 0 0 0.5);
+            bottom: 0;
+            display: none;
+        }
+
+        .play {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            color: white;
+            margin-left: 20px;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+
+        }
+
+        .time {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            /*border: 1px solid white;*/
+            /*border-radius: 10px;*/
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+            margin-left: 120px;
+
+        }
+
+        .progress_bar {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: white;
+            left: 0px;
+            top: -2px;
+        }
+
+        .progress_bar div {
+            position: absolute;
+            width: 1000px;
+            height: 2px;
+            background: orange;
+            left: 0;
+            top: 0;
+        }
+
+        .progress_bar i {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background: white;
+            left: 120px;
+            top: -2px;
+        }
+
+        + + + + + + + + + + + + + + + + + +
+        .quick {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            color: white;
+            left: 400px;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+
+        }
+
+        .quick_list {
+            position: absolute;
+            width: 80px;
+            height: 120px;
+            background: pink;
+            left: 400px;
+            top: -120px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .quick_list li {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            height: 30px;
+            list-style: none;
+            cursor: pointer;
+
+        }
+
+        .quick_list li:hover {
+            color: orange;
+        }
+
+        .vol_add {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            color: white;
+            left: 500px;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+
+        }
+
+        .vol_ins {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            color: white;
+            left: 580px;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+
+        }
+
+        .full_screen {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            border: 1px solid white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 10px;
+            color: white;
+            left: 700px;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+<!--    <audio src="./video/2.mp4" controls></audio>-->
+<div class="video_player">
+    <video src="./video/2.mp4"></video>
+    <div class="menu">
+        <div class="play">播放</div>
+        <div class="time">0.00/0.00</div>
+        <div class="progress_bar">
+            <div></div>
+            <i></i>
+        </div>
+        <div class="quick">倍速</div>
+        <div class="quick_list">
+            <ul>
+                <li>正常</li>
+                <li>x1.25</li>
+                <li>x1.5</li>
+                <li>x2</li>
+            </ul>
+        </div>
+        <div class="vol_add">音量加</div>
+        <div class="vol_ins">音量减</div>
+        <div class="full_screen">全屏</div>
+    </div>
+</div>
+<script>
+    var videoPlayer = document.getElementsByClassName("video_player")[0];
+    var video = videoPlayer.getElementsByTagName('video')[0];
+    var menu = document.getElementsByClassName("menu")[0];
+    var play = document.getElementsByClassName("play")[0];
+    var time = document.getElementsByClassName("time")[0];
+    var progressBar = document.getElementsByClassName("progress_bar")[0];
+    var quick = document.getElementsByClassName("quick")[0];
+    var quickList = document.getElementsByClassName("quick_list")[0];
+    var volAdd = document.getElementsByClassName("vol_add")[0];
+    var volIns = document.getElementsByClassName("vol_ins")[0];
+    var fullScreen = document.getElementsByClassName("full_screen")[0];
+    videoPlayer.onmouseenter = function () {
+        menu.style.display = "block"
+    };
+    videoPlayer.onmouseleave = function () {
+        menu.style.display = "none";
+    };
+    play.onclick = function () {
+        if (video.paused) {
+            video.play();
+            play.innerHTML = "暂停"
+        } else {
+            video.pause();
+            play.innerHTML = "播放"
+        }
+    };
+
+    progressBar.onmouseenter = function () {
+        progressBar.style.height = "14px";
+        progressBar.style.top = "-14px";
+        progressBar.getElementsByTagName("div")[0].style.height = "14px";
+        progressBar.getElementsByTagName("i")[0].style.height = "18px";
+    };
+    progressBar.onmouseleave = function () {
+        progressBar.style.height = "2px";
+        progressBar.style.top = "-2px";
+        progressBar.getElementsByTagName("div")[0].style.height = "2px";
+        progressBar.getElementsByTagName("i")[0].style.height = "6px";
+    };
+    progressBar.onclick = function (e) {
+        var location = e.layerX;
+        var width = progressBar.clientWidth;
+        var targetTime = location / width * video.duration;
+        video.currentTime = targetTime;
+    };
+    setInterval(function () {
+        var total = video.duration;
+        var nowTime = video.currentTime;
+        time.innerHTML = parseInt(nowTime / 60) + ":" + parseInt(nowTime % 60) + " / " + parseInt(total /
+            60) + ":" + parseInt(total % 60)
+
+        var width = nowTime / total * progressBar.clientWidth;
+        progressBar.getElementsByTagName("div")[0].style.width = width + "2px";
+        progressBar.getElementsByTagName("i")[0].style.left = width + "6px";
+
+    }, 1000);
+    quick.onclick = function () {
+        quickList.style.display = "block";
+    };
+    quickList.onmouseleave = function () {
+        quickList.style.display = "none";
+    };
+    var liList = quickList.getElementsByTagName("ul")[0].getElementsByTagName("li");
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].index = i;
+        liList[i].onclick = function () {
+            if (this.index == 0) {
+                video.playbackRate = 1;
+                quick.innerHTML = "倍速"
+            } else if (this.index == 1) {
+                video.playbackRate = 1.25;
+                quick.innerHTML = "x1.25"
+            } else if (this.index == 2) {
+                video.playbackRate = 1.5;
+                quick.innerHTML = "x1.5"
+            } else {
+                video.playbackRate = 2;
+                quick.innerHTML = "x2"
+            }
+        }
+    }
+    volAdd.onclick = function () {
+        video.volume = video.volume + 0.1 >= 1 ? 1 : video.volume + 0.1;
+        console.log(video.volume);
+
+    };
+    volIns.onclick = function () {
+        video.volume = video.volume - 0.1 < 0 ? 0 : video.volume - 0.1;
+        console.log(video.volume);
+    };
+    fullScreen.onclick = function () {
+        var dom = document.documentElement;
+        dom.requestFullscreen();
+        videoPlayer.style.width = window.screen.width + "px";
+        videoPlayer.style.height = window.screen.height + "px";
+        video.style.width = window.screen.width + "px";
+        video.style.height = window.screen.height + "px";
+    }
+</script>
+</body>
+
+</html>

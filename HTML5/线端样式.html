@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+
+			canvas{
+				width: 500px;
+				height: 300px;
+				border: 1px solid black;
+			}
+
+
+		</style>
+	</head>
+	<body>
+     <canvas id="canvas" width="500" height="300"></canvas>
+	 <script>
+
+		 var canvas=document.getElementById("canvas");
+		 var ctx=canvas.getContext('2d');
+
+
+		 ctx.beginPath();
+		 ctx.lineWidth=5;
+		 ctx.moveTo(100,100);
+		 ctx.lineTo(200,100);
+		 ctx.lineTo(100,150);
+		 // ctx.lineCap="round" butt
+		 ctx.lineJoin="miter";//bevel round miter  miterLimit
+		 ctx.stroke();
+
+
+
+
+	 </script>
+
+	</body>
+</html>

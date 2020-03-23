@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>worker</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * js都是单线程的
+         * worker是多线程的，是真的多线程，不是伪多线程
+         * worker不能操作dom,没有window对象,不能读取文件
+         * 可以发ajax,可以计算。
+         * 在worker能否继续创建worker?理论上可以，但是实际上没有任何浏览器支持
+         */
+        // let beginTime = Date.now();
+        // console.log("==========");
+        // console.log("==========");
+
+        // let a = 1000000;
+        // let worker = new Worker("./worker.js");
+        // worker.postMessage({
+        //     num: a
+        // })
+        // worker.onmessage = function (e) {
+        //     console.log(e.data);
+        // }
+        // // let result = 0;
+        // // for (let i = 0; i < a; i++) {
+        // //     result += i;
+        // // }
+        // // console.log(result);
+        // console.log("==========");
+        // console.log("==========");
+        // let endTime = Date.now();
+        // console.log(endTime - beginTime);
+        // worker.terminate();
+
+        let bar = 1;
+
+        function foo(bar) {
+            bar = 2;
+            alert(bar);
+        }
+        foo(bar)
+        alert(bar);
+    </script>
+</body>
+
+</html>

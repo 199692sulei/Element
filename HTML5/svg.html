@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .line1 {
+        	stroke: black;
+        	stroke-width: 10px;
+        	stroke-dasharray:200px;
+        	stroke-dashoffset: 200px;
+        	animation: move 1s linear infinite alternate-reverse;
+        }
+        @keyframes move {
+        	0%{
+        		stroke-dashoffset: 200px;
+        	}
+        	100%{
+        		stroke-dashoffset: 0px;
+        	}
+        }
+
+        /*.line2 {*/
+        /*	stroke: red;*/
+        /*	stroke-width: 5px;*/
+        /*}*/
+        /*polyline{*/
+        /*	fill:transparent;*/
+        /*	stroke: blueviolet;*/
+        /*	stroke-width: 3px;*/
+        /*}*/
+        circle{
+        	fill:transparent;
+        	stroke: red;
+        }
+        polygon{
+        	fill: transparent;
+        	stroke: black;
+        	stroke-width: 3px;
+        	stroke-opacity: 0.5;
+        	stroke-linecap: round;
+        }
+        text{
+        	  stroke: orange;
+        	stroke-width: 3px;
+        }
+        path{
+        	fill: transparent;
+        	stroke: red;
+        }
+    </style>
+</head>
+
+<body>
+<!--viewBox="0 0 250 150"-->
+<!--   <div class="demo" style="cursor: pointer">点击事件</div>-->
+<svg width="500px" height="300px"  style="border: 1px solid; ">
+    		<line x1="100" y1="100" x2="200" y2="100" class="line1"></line>
+    <!--		<line x1="200" y1="100" x2="200" y2="200" class="line2"></line>-->
+    <!--		<rect height="50" width="100" x="0" y="0" rx="50" ry="50"></rect>-->
+<!--    <circle r="50" cx="50" cy="220"></circle>-->
+<!--    <ellipse rx="100" ry="30" cx="400" cy="200"></ellipse>-->
+<!--    		<polyline points="0 0,50 50,50 100,100 100"></polyline>-->
+<!--    		<polygon points="0 0,50 50,100,100,200,100"></polygon>-->
+<!--    		<text x="300" y="200">苏磊身体好</text>-->
+    <!--               	大写字母绝对位置， 小写字母 相对位置	   Z 闭合-->
+<!--    		    <path d="M 100 100 L 200 100 L 200 200"></path>-->
+<!--    		    <path d="M 100 100 H 200 V 200 Z"></path>-->
+    //圆弧指令
+<!--    		<path d="M 100 100 A 100 50 0 1 1 150 200"></path>-->
+<!--    		<defs>-->
+<!--    			<linearGradient id="bg1" x1="0" y1="0" x2="100%" y2="100%">-->
+<!--    				<stop offset="0%" style="stop-color: rgb(255,255,0)"></stop>-->
+<!--    				<stop offset="100%" style="stop-color: rgb(255,0,0)"></stop>-->
+<!--    			</linearGradient>-->
+
+<!--    			<filter id="Gaussian">-->
+<!--    				<feGaussianBlur in="SourceGraphic" stdDeviation="20"></feGaussianBlur>-->
+<!--    			</filter>-->
+<!--    		</defs>-->
+<!--    		<rect x="100" y="100" height="100" width="200" style="fill:url(#bg1);filter: url(#Gaussian)"></rect>-->
+</svg>
+
+<script>
+    // var div=document.getElementsByClassName('demo')[0];
+    // div.ondblclick=function () {
+    //  alert('我是双击事件')
+    // }
+
+
+</script>
+</body>
+
+</html>

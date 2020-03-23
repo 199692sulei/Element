@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            position: absolute;
+            width: 150px;
+            height: auto;
+            border: 1px solid black;
+            padding-bottom: 10px;
+        }
+        .box2{
+            position: absolute;
+            left: 300px;
+            width: 150px;
+            height: auto;
+            border: 1px solid black;
+            padding-bottom: 10px;
+        }
+        li{
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            position: relative;
+            background-color:#abcdef;
+            margin: 10px auto 0px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <li></li>
+    <li></li>
+    <li></li>
+</div>
+<div class="box2"></div>
+
+<script>
+         var dragDom;
+        var liList=document.getElementsByTagName("li");
+        for (var i = 0;i < liList.length; i++){
+            liList[i].setAttribute("draggable",true);
+            liList[i].ondragstart=function (e) {
+                e.dataTransfer.effectAllowed='link'; //copy move  copymove linkmove all 必须在dragstart里面设置 
+                dragDom = e.target;
+                console.log(e.target);
+            }
+        }
+        var box2=document.getElementsByClassName("box2")[0];
+        box2.ondragover=function (e) {
+              e.preventDefault();
+        };
+        box2.ondrop=function (e) {
+            box2.appendChild(dragDom);
+            e.dataTransfer.dropEffect="link";
+            dragDom = null;
+        };
+         var box1=document.getElementsByClassName("box1")[0];
+         box1.ondragover=function (e) {
+             e.preventDefault();
+         };
+         box1.ondrop=function (e) {
+             box1.appendChild(dragDom);
+             e.dataTransfer.dropEffect="link";
+             dragDom=null;
+         }
+
+
+</script>
+</body>
+</html>

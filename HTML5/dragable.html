@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #abcdef;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo" draggable="true"></div>
+    <!-- <a href="http://www.taobao.com">百度一下</a> -->
+    <!-- a标签和img标签默认有拖拽功能 -->
+    <!-- 
+           拖拽的声明周期
+           1,拖拽开始，拖拽进行中，拖拽结束
+           2,被拖拽的物体，目标区域
+           按下物体瞬间是不会触发事件的 
+        -->
+    <script>
+        var oDivdrag = document.getElementsByClassName("demo")[0];
+        var beginX = 0;
+        var beginY = 0;
+        oDivdrag.ondragstart = function (e) {
+            beginX = e.clientX;
+            beginY = e.clientY;
+        }
+        oDivdrag.ondragend = function (e) {
+            x = e.clientX - beginX;
+            y = e.clientY - beginY;
+            oDivdrag.style.left = oDivdrag.offsetLeft + x + "px";
+            oDivdrag.style.top = oDivdrag.offsetTop + y + "px";
+        }
+    </script>
+</body>
+
+</html>
